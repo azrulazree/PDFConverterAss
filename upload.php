@@ -1,12 +1,14 @@
 <?php
-if(isset($_POST['submit'])){
-    $file = $_FILES['file'];
-
-    $fileName = $_FILES['file']['name'];
-    $fileTmpName = $_FILES['file']['tmp_name'];
-    $fileSize = $_FILES['file']['size'];
-    $fileError = $_FILES['file']['error'];
-    $fileType = $_FILES['file']['type'];
-
-    $fileExt = explode('.', $fileName);
+$allowedExts = array("pdf");
+$temp = explode(".", $_FILES["pdf_file"]["name"]);
+$extension = end($temp);
+$upload_pdf=$_FILES["pdf_file"]["name"];
+move_uploaded_file($_FILES["pdf_file"]["tmp_name"],"uploads/pdf/" . $_FILES["pdf_file"]["name"]);
+$sql=mysqli_query($con,"INSERT INTO `Table Name`(`pdf_file`)VALUES($upload_pdf')");
+if($sql){
+	echo "Data Submit Successful";
 }
+else{
+	echo "Data Submit Error!!";
+}
+?>

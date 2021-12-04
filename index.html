@@ -52,8 +52,11 @@
 
         <!-------- file upload -------->
         <div class="upload">
-            <div class="upload-title">Upload.</div>
-            <input type="file" class="upload-box">
+            <form action="upload.php" method="POST" enctype="multipart/form-data">
+                <div class="upload-title">Upload.</div>
+                <input type="file" class="upload-box" name="file" accept="application/pdf">
+                <button type="submit" name="submit">UPLOAD</button>
+            </form>
         </div>
 
         <!-------- file download -------->
